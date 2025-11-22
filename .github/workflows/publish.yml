@@ -1,0 +1,51 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    # Only run if version PR was just merged (version files changed)
+    if: contains(github.event.head_commit.message, 'chore: version packages') || contains(github.event.head_commit.message, 'Version Packages')
+    permissions:
+      id-token: write # Required for OIDC trusted publishing
+      contents: read
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          registry-url: 'https://registry.npmjs.org'
+
+      - uses: pnpm/action-setup@v4
+        # Version is automatically read from package.json packageManager field
+
+      - name: Ensure npm 11.5.1+ for trusted publishing
+        run: npm install -g npm@latest
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Package
+        run: pnpm build:package
+
+      - name: Publish to npm
+        run: |
+          cd packages/tailwindcss-better-gradient
+          npm publish --access public
+        env:
+          # Using OIDC trusted publishing (no NPM_TOKEN needed)
+          # If you need to install private dependencies, use a read-only token:
+          # NODE_AUTH_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
+

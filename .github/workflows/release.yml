@@ -45,25 +45,23 @@ jobs:
           # Check if there are any changeset files (excluding README.md)
           if find .changeset -name "*.md" -not -name "README.md" -not -name "example-changeset.md" | grep -q .; then
             echo "has_changesets=true" >> $GITHUB_OUTPUT
-            echo "✅ Changesets found. Proceeding with version and publish."
+            echo "✅ Changesets found. Creating version PR."
           else
             echo "has_changesets=false" >> $GITHUB_OUTPUT
-            echo "ℹ️  No changesets found. Skipping version and publish."
+            echo "ℹ️  No changesets found. Skipping version PR creation."
             echo "💡 Add a changeset with: pnpm changeset"
           fi
 
-      - name: Create Release Pull Request or Publish to npm
+      - name: Create Version Pull Request
         if: steps.changesets-check.outputs.has_changesets == 'true'
-        id: changesets
+        id: changesets-version
         uses: changesets/action@v1
         with:
-          # This expects you to have a script called release which does a build for your packages and calls npm publish
-          # Only runs when changesets are present (added via: pnpm changeset)
-          publish: pnpm release
+          # Create version PR when changesets are found
+          # This will bump versions and create a PR
           version: pnpm version:packages
+          # Don't publish automatically - publishing happens when version PR is merged
+          # Set to empty string to skip publishing in this step
+          publish: ''
         env:
-          # Use PAT if GITHUB_TOKEN doesn't have PR permissions
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # NPM_TOKEN no longer needed - using OIDC trusted publishing
-          # If you need to install private dependencies, use a read-only token:
-          # NODE_AUTH_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
