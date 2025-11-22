@@ -39,11 +39,26 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      - name: Check for changesets
+        id: changesets-check
+        run: |
+          # Check if there are any changeset files (excluding README.md)
+          if find .changeset -name "*.md" -not -name "README.md" -not -name "example-changeset.md" | grep -q .; then
+            echo "has_changesets=true" >> $GITHUB_OUTPUT
+            echo "✅ Changesets found. Proceeding with version and publish."
+          else
+            echo "has_changesets=false" >> $GITHUB_OUTPUT
+            echo "ℹ️  No changesets found. Skipping version and publish."
+            echo "💡 Add a changeset with: pnpm changeset"
+          fi
+
       - name: Create Release Pull Request or Publish to npm
+        if: steps.changesets-check.outputs.has_changesets == 'true'
         id: changesets
         uses: changesets/action@v1
         with:
           # This expects you to have a script called release which does a build for your packages and calls npm publish
+          # Only runs when changesets are present (added via: pnpm changeset)
           publish: pnpm release
           version: pnpm version:packages
         env:
