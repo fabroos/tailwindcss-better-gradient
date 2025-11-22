@@ -45,7 +45,5 @@ jobs:
           version: pnpm version:packages
         env:
           # Use PAT if GITHUB_TOKEN doesn't have PR permissions
-          # Replace GITHUB_TOKEN with PAT if repository settings don't allow PR creation
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # GITHUB_TOKEN: ${{ secrets.PAT }}  # Uncomment to use PAT instead
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
