@@ -19,7 +19,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # Use PAT if GITHUB_TOKEN doesn't have PR permissions
+          # Uncomment the line below and add PAT secret if needed
+          # token: ${{ secrets.PAT }}
 
       - name: Setup Node.js 18.x
         uses: actions/setup-node@v3
@@ -42,5 +44,8 @@ jobs:
           publish: pnpm release
           version: pnpm version:packages
         env:
+          # Use PAT if GITHUB_TOKEN doesn't have PR permissions
+          # Replace GITHUB_TOKEN with PAT if repository settings don't allow PR creation
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GITHUB_TOKEN: ${{ secrets.PAT }}  # Uncomment to use PAT instead
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
