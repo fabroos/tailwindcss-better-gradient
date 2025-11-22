@@ -11,7 +11,7 @@
     "changeset": "changeset",
     "version": "changeset version",
     "version:packages": "changeset version",
-    "release": "pnpm build:package && changeset publish",
+    "release": "pnpm build:package && cd packages/tailwindcss-better-gradient && npm publish --access public",
     "test": "pnpm build:package && pnpm build:playground",
     "lint": "pnpm --filter tailwindcss-better-gradient lint",
     "typecheck": "pnpm --filter tailwindcss-better-gradient typecheck",
