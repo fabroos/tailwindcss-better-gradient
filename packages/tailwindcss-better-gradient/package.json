@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-better-gradient",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A Tailwind CSS plugin for creating beautiful gradient backgrounds with directional control",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
