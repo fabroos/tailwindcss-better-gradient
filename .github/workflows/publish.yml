@@ -15,8 +15,8 @@ jobs:
   publish:
     name: Publish to npm
     runs-on: ubuntu-latest
-    # Only run if this is a version commit (version PR was merged)
-    if: contains(github.event.head_commit.message, 'chore: version packages') || contains(github.event.head_commit.message, 'Version Packages') || contains(github.event.head_commit.message, 'chore: version')
+    # Only run if package.json version changed (version PR was merged)
+    # We check if there are no changesets left (they were consumed) AND package.json changed
     permissions:
       id-token: write # Required for OIDC trusted publishing
       contents: read
@@ -41,10 +41,29 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Check if version changed (version PR was merged)
+        id: version-check
+        run: |
+          # Get current version from package.json
+          CURRENT_VERSION=$(node -p "require('./packages/tailwindcss-better-gradient/package.json').version")
+          
+          # Get previous version from git (before this commit)
+          PREVIOUS_VERSION=$(git show HEAD~1:packages/tailwindcss-better-gradient/package.json 2>/dev/null | node -p "JSON.parse(require('fs').readFileSync(0)).version" 2>/dev/null || echo "")
+          
+          if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ] && [ -n "$PREVIOUS_VERSION" ]; then
+            echo "version_changed=true" >> $GITHUB_OUTPUT
+            echo "✅ Version changed from $PREVIOUS_VERSION to $CURRENT_VERSION - ready to publish"
+          else
+            echo "version_changed=false" >> $GITHUB_OUTPUT
+            echo "ℹ️  Version unchanged or first commit - skipping publish"
+          fi
+
       - name: Build Package
+        if: steps.version-check.outputs.version_changed == 'true'
         run: pnpm build:package
 
       - name: Publish to npm
+        if: steps.version-check.outputs.version_changed == 'true'
         run: |
           cd packages/tailwindcss-better-gradient
           npm publish --access public
