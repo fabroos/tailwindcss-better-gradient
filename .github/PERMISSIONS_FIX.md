@@ -1,6 +1,7 @@
 # Fixing GitHub Actions Pull Request Permissions
 
 ## Problem
+
 GitHub Actions is getting "not permitted to create or approve pull requests" error when using changesets action.
 
 ## Solution Options
@@ -53,6 +54,7 @@ If this is an organization repository:
 ## Current Workflow Configuration
 
 The workflow already has:
+
 ```yaml
 permissions:
   contents: write
@@ -60,6 +62,7 @@ permissions:
 ```
 
 And checkout is configured with:
+
 ```yaml
 - uses: actions/checkout@v3
   with:
@@ -70,6 +73,7 @@ And checkout is configured with:
 ## Verification
 
 After applying Option 1, the next push to `main` should:
+
 1. ✅ Create a branch `changeset-release/main`
 2. ✅ Create a pull request automatically
 3. ✅ Not show permission errors
@@ -98,4 +102,3 @@ If still getting errors after Option 1:
 - [GitHub Actions Permissions](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token)
 - [Changesets Action Documentation](https://github.com/changesets/action)
 - [GitHub Workflow Permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#configuring-the-default-github_token-permissions)
-

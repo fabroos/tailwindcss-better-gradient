@@ -38,23 +38,26 @@ The workflow is already configured with:
 
 ```yaml
 permissions:
-  id-token: write  # Required for OIDC
+  id-token: write # Required for OIDC
   contents: write
   pull-requests: write
 ```
 
 And includes:
+
 - `npm install -g npm@latest` to ensure npm 11.5.1+
 - No NPM_TOKEN secret needed
 
 ## Step 3: Test Publishing
 
 1. Create a changeset:
+
    ```bash
    pnpm changeset
    ```
 
 2. Commit and push:
+
    ```bash
    git add .
    git commit -m "chore: add changeset"
@@ -88,6 +91,7 @@ This disables traditional token publishing while keeping trusted publishers acti
 ### Error: "Unable to authenticate"
 
 **Check:**
+
 - ✅ Workflow filename matches exactly (including `.yml`)
 - ✅ Repository name matches exactly
 - ✅ GitHub username/organization matches
@@ -97,6 +101,7 @@ This disables traditional token publishing while keeping trusted publishers acti
 ### Error: "npm version too old"
 
 The workflow automatically updates npm, but if you see this:
+
 - Ensure `npm install -g npm@latest` step runs before publish
 - Check npm version: `npm --version` (needs 11.5.1+)
 
@@ -114,13 +119,13 @@ But `npm publish` will still use OIDC (no token needed).
 
 ## Benefits Over Token-Based Publishing
 
-| Feature | Token-Based | Trusted Publishing (OIDC) |
-|---------|-------------|---------------------------|
-| Token lifetime | Long-lived | Short-lived (per workflow) |
-| Token storage | GitHub Secrets | None needed |
-| Security risk | High (if leaked) | Low (can't be extracted) |
-| Provenance | Manual | Automatic |
-| Token rotation | Manual | Automatic |
+| Feature        | Token-Based      | Trusted Publishing (OIDC)  |
+| -------------- | ---------------- | -------------------------- |
+| Token lifetime | Long-lived       | Short-lived (per workflow) |
+| Token storage  | GitHub Secrets   | None needed                |
+| Security risk  | High (if leaked) | Low (can't be extracted)   |
+| Provenance     | Manual           | Automatic                  |
+| Token rotation | Manual           | Automatic                  |
 
 ## References
 
@@ -139,4 +144,3 @@ If you're currently using NPM_TOKEN:
 5. **Revoke old automation tokens** from npm account
 
 This ensures a smooth transition without disrupting releases.
-

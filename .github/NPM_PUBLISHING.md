@@ -25,6 +25,7 @@ Your package `tailwindcss-better-gradient` is configured to publish to the **pub
 ### 3. Verify Package Configuration
 
 Your `package.json` should have:
+
 ```json
 {
   "name": "tailwindcss-better-gradient",
@@ -40,6 +41,7 @@ Your `package.json` should have:
 ## Workflow Authentication
 
 The GitHub Actions workflow uses:
+
 - `NPM_TOKEN` secret for npmjs.org authentication
 - `GITHUB_TOKEN` for GitHub API (creating PRs, etc.)
 
@@ -50,6 +52,7 @@ If you want to publish to **GitHub Packages** instead (npm.pkg.github.com):
 ### Changes Needed:
 
 1. **Update package.json:**
+
    ```json
    {
      "name": "@fabroos/tailwindcss-better-gradient",
@@ -71,12 +74,14 @@ If you want to publish to **GitHub Packages** instead (npm.pkg.github.com):
 ### Pros/Cons:
 
 **npmjs.org (Current):**
+
 - ✅ Public, discoverable on npm
 - ✅ Standard npm registry
 - ✅ Works with all npm tools
 - ❌ Requires separate npm account/token
 
 **GitHub Packages:**
+
 - ✅ Integrated with GitHub
 - ✅ Can use GITHUB_TOKEN
 - ✅ Free for public packages
@@ -87,6 +92,7 @@ If you want to publish to **GitHub Packages** instead (npm.pkg.github.com):
 ## Current Configuration (npmjs.org)
 
 Your workflow is configured for npmjs.org:
+
 - Registry: `https://registry.npmjs.org`
 - Token: `NPM_TOKEN` secret
 - Package: `tailwindcss-better-gradient` (unscoped)
@@ -94,20 +100,24 @@ Your workflow is configured for npmjs.org:
 ## Troubleshooting
 
 ### Error: "E404 Not Found"
+
 - **Cause:** npm can't authenticate or package doesn't exist
 - **Fix:** Ensure `NPM_TOKEN` is set correctly in secrets
 
 ### Error: "You do not have permission"
+
 - **Cause:** Token doesn't have publish permissions
 - **Fix:** Regenerate token with correct permissions
 
 ### Error: "Package name already exists"
+
 - **Cause:** Someone else owns the package name
 - **Fix:** Use a scoped name like `@fabroos/tailwindcss-better-gradient`
 
 ## Verification
 
 After setting up `NPM_TOKEN`, the workflow should:
+
 1. ✅ Authenticate to npmjs.org
 2. ✅ Build the package
 3. ✅ Publish successfully
@@ -118,4 +128,3 @@ After setting up `NPM_TOKEN`, the workflow should:
 - [npm Publishing Guide](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry)
 - [GitHub Actions npm Authentication](https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages)
 - [GitHub Packages npm Guide](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry)
-

@@ -56,9 +56,7 @@
       }
 
       this.color = colorAttr.startsWith('fade-') ? colorAttr : `fade-${colorAttr}`;
-      this.steps = stepsAttr.startsWith('fade-')
-        ? stepsAttr
-        : `fade-${stepsAttr}`;
+      this.steps = stepsAttr.startsWith('fade-') ? stepsAttr : `fade-${stepsAttr}`;
       // Handle both color classes and image URLs
       this.background = backgroundAttr.startsWith('http')
         ? backgroundAttr
