@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      # Only trigger when package.json version changes (version PR merged)
+      - 'packages/tailwindcss-better-gradient/package.json'
+      - '.changeset/**'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -11,8 +15,8 @@ jobs:
   publish:
     name: Publish to npm
     runs-on: ubuntu-latest
-    # Only run if version PR was just merged (version files changed)
-    if: contains(github.event.head_commit.message, 'chore: version packages') || contains(github.event.head_commit.message, 'Version Packages')
+    # Only run if this is a version commit (version PR was merged)
+    if: contains(github.event.head_commit.message, 'chore: version packages') || contains(github.event.head_commit.message, 'Version Packages') || contains(github.event.head_commit.message, 'chore: version')
     permissions:
       id-token: write # Required for OIDC trusted publishing
       contents: read
