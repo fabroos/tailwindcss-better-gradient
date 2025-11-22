@@ -7,5 +7,9 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": []
+  "ignore": [
+    "README.md",
+    "example-changeset.md",
+    "QUICK_START.md"
+  ]
 }
