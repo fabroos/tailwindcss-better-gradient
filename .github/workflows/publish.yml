@@ -7,7 +7,6 @@ on:
     paths:
       # Only trigger when package.json version changes (version PR merged)
       - 'packages/tailwindcss-better-gradient/package.json'
-      - '.changeset/**'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
