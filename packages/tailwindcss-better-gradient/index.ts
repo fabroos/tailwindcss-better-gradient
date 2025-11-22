@@ -7,10 +7,10 @@ import type { PluginAPI } from 'tailwindcss/dist/plugin.d.mts';
 
 /**
  * Generates gradient stops with an easing curve for smooth fades
- * 
+ *
  * Inspired by Smooth Gradient Overlays by Shu Ding
  * @see https://smooth-overlays.vercel.app/
- * 
+ *
  * @param steps - Number of gradient stops
  * @returns Formatted gradient stops string
  */
