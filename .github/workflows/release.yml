@@ -12,6 +12,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     permissions:
+      id-token: write  # Required for OIDC trusted publishing
       contents: write
       pull-requests: write
     steps:
@@ -24,28 +25,20 @@ jobs:
           # token: ${{ secrets.PAT }}
 
       - name: Setup Node.js 18.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18.x
           registry-url: 'https://registry.npmjs.org'
-          # Always-auth: true ensures npm uses the token
-          always-auth: true
-          # Scope is optional but helps with authentication
-          scope: '@fabroos'
 
       - uses: pnpm/action-setup@v2
         with:
           version: 8
 
+      - name: Ensure npm 11.5.1+ for trusted publishing
+        run: npm install -g npm@latest
+
       - name: Install Dependencies
         run: pnpm install
-
-      - name: Configure npm authentication for npmjs.org
-        run: |
-          # Configure npm to use the token for npmjs.org registry
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
-          # Verify authentication
-          npm whoami --registry=https://registry.npmjs.org
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
@@ -57,4 +50,6 @@ jobs:
         env:
           # Use PAT if GITHUB_TOKEN doesn't have PR permissions
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # NPM_TOKEN no longer needed - using OIDC trusted publishing
+          # If you need to install private dependencies, use a read-only token:
+          # NODE_AUTH_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
