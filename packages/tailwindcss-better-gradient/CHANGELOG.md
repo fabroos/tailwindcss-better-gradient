@@ -1,5 +1,11 @@
 # tailwindcss-better-gradient
 
+## 0.1.0
+
+### Minor Changes
+
+- 6f6a72c: Update naming of classes
+
 ## 0.0.9
 
 ### Patch Changes

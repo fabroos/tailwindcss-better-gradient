@@ -1,5 +1,12 @@
 # playground
 
+## 1.0.2
+
+### Patch Changes
+
+- Updated dependencies [6f6a72c]
+  - tailwindcss-better-gradient@0.1.0
+
 ## 1.0.1
 
 ### Patch Changes
