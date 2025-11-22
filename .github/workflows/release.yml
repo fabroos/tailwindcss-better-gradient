@@ -30,6 +30,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           # Always-auth: true ensures npm uses the token
           always-auth: true
+          # Scope is optional but helps with authentication
+          scope: '@fabroos'
 
       - uses: pnpm/action-setup@v2
         with:
@@ -38,10 +40,12 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Configure npm authentication
+      - name: Configure npm authentication for npmjs.org
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          npm whoami
+          # Configure npm to use the token for npmjs.org registry
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+          # Verify authentication
+          npm whoami --registry=https://registry.npmjs.org
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
