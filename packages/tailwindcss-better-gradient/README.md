@@ -74,6 +74,10 @@ module.exports = {
 - `fade-br` - Bottom Right (135deg)
 - `fade-bl` - Bottom Left (225deg)
 
+## Credits
+
+This plugin was inspired by [Smooth Gradient Overlays](https://smooth-overlays.vercel.app/) by [Shu Ding](https://github.com/shuding). The concept of using easing curves for smooth gradient transitions comes from their excellent work.
+
 ## License
 
 MIT

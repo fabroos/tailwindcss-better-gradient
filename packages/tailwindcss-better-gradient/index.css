@@ -1,4 +1,8 @@
-/* Tailwind CSS Better Gradient Plugin - CSS-based implementation for v4 */
+/* Tailwind CSS Better Gradient Plugin - CSS-based implementation for v4
+ * 
+ * Inspired by Smooth Gradient Overlays by Shu Ding
+ * https://smooth-overlays.vercel.app/
+ */
 
 /* Directional utilities */
 @utility fade-t {
