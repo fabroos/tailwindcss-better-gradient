@@ -2,6 +2,17 @@
 
 This directory contains changeset files that describe changes made to packages in this monorepo.
 
+## Quick Start
+
+**Create a changeset:**
+```bash
+pnpm changeset
+```
+
+Select package → Select type (patch/minor/major) → Describe change → Done!
+
+See [QUICK_START.md](./QUICK_START.md) for detailed examples.
+
 ## What are Changesets?
 
 Changesets are a way to document changes to packages. They help with:
