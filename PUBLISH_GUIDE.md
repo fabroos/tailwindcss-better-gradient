@@ -5,6 +5,7 @@ Complete guide for publishing the Tailwind CSS Better Gradient plugin to npm.
 ## Package Overview
 
 This package provides both:
+
 - **CSS-based plugin** (`index.css`) - Primary method for Tailwind CSS v4 using `@utility` directives
 - **JavaScript plugin** (`dist/index.js`) - Backward compatibility for Tailwind v3
 
@@ -53,6 +54,7 @@ pnpm run build  # or npm run build
 ```
 
 This should:
+
 - Compile `index.ts` → `dist/index.js`
 - Generate `dist/index.d.ts` type definitions
 - Show no errors
@@ -140,6 +142,7 @@ git commit -m "Bump version to X.X.X"
 ```
 
 **Version Bump Guidelines:**
+
 - **Patch** (`0.0.X`): Bug fixes, documentation updates, minor improvements
 - **Minor** (`0.X.0`): New features, new utilities, non-breaking changes
 - **Major** (`X.0.0`): Breaking changes, API changes, major refactors
@@ -211,6 +214,7 @@ pnpm run build && npm version patch && npm publish --access public
 ```
 
 This will:
+
 1. Build TypeScript
 2. Bump patch version
 3. Publish to npm
@@ -245,6 +249,7 @@ The `files` field in `package.json` controls what gets published:
 ```
 
 **Excluded (automatically):**
+
 - `node_modules/`
 - `index.ts` (source, not needed in package)
 - `tsconfig.json` (build config, not needed)
@@ -262,6 +267,7 @@ The `files` field in `package.json` controls what gets published:
 ### Error: "You do not have permission to publish"
 
 **Solutions:**
+
 ```bash
 # Verify login
 npm whoami
@@ -276,6 +282,7 @@ npm view tailwindcss-better-gradient
 ### Error: "Cannot publish over previously published versions"
 
 **Solution:**
+
 ```bash
 # Version already exists, bump to next version
 npm version patch  # or minor/major
@@ -285,6 +292,7 @@ npm publish --access public
 ### Error: "Package path ./dist/plugin.js is not exported"
 
 **Solution:**
+
 - This was fixed in v0.0.4 by using proper export paths
 - Ensure you're using `tailwindcss/plugin` not `tailwindcss/dist/plugin.js`
 - Check that imports use package.json exports correctly
@@ -292,6 +300,7 @@ npm publish --access public
 ### Error: "y is not a function"
 
 **Solution:**
+
 - This was fixed in v0.0.6 by using CommonJS exports (`module.exports`)
 - Ensure `index.ts` uses `module.exports = plugin(...)` not `export default`
 - Verify compiled output uses `module.exports`
@@ -299,6 +308,7 @@ npm publish --access public
 ### Build Errors
 
 **TypeScript compilation fails:**
+
 ```bash
 # Check TypeScript version
 pnpm list typescript
@@ -309,6 +319,7 @@ pnpm run build
 ```
 
 **Missing type definitions:**
+
 ```bash
 # Install missing types
 pnpm add -D @types/node  # if using require()
@@ -363,10 +374,12 @@ Consider maintaining a `CHANGELOG.md`:
 ## [0.0.8] - 2024-11-22
 
 ### Added
+
 - CSS-based functional utilities for Tailwind v4
 - Support for @utility directives
 
 ### Changed
+
 - Primary distribution method is now CSS-based
 - JavaScript plugin kept for backward compatibility
 ```

@@ -5,8 +5,20 @@
   "description": "Monorepo for Tailwind CSS Better Gradient plugin and playground",
   "scripts": {
     "dev": "pnpm --filter playground dev",
-    "build": "pnpm --filter playground build",
-    "build:playground": "pnpm --filter playground build"
+    "build": "pnpm --filter tailwindcss-better-gradient build && pnpm --filter playground build",
+    "build:package": "pnpm --filter tailwindcss-better-gradient build",
+    "build:playground": "pnpm --filter playground build",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "version:packages": "changeset version",
+    "release": "pnpm build:package && changeset publish",
+    "test": "pnpm build:package && pnpm build:playground",
+    "lint": "pnpm --filter tailwindcss-better-gradient lint",
+    "typecheck": "pnpm --filter tailwindcss-better-gradient typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "clean": "pnpm --filter tailwindcss-better-gradient clean && pnpm --filter playground clean",
+    "prepublish": "pnpm build:package"
   },
   "keywords": [
     "tailwindcss",
@@ -16,5 +28,9 @@
   ],
   "author": "",
   "license": "MIT",
-  "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd"
+  "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
+  "devDependencies": {
+    "@changesets/cli": "^2.29.7",
+    "prettier": "^3.6.2"
+  }
 }

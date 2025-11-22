@@ -21,6 +21,7 @@ A monorepo containing the Tailwind CSS Better Gradient plugin and its playground
 The main Tailwind CSS plugin package for creating beautiful gradient backgrounds with directional control.
 
 **Installation:**
+
 ```bash
 npm install tailwindcss-better-gradient
 ```
@@ -34,6 +35,7 @@ See [packages/tailwindcss-better-gradient/README.md](./packages/tailwindcss-bett
 Interactive demo app for testing the plugin. This is a development tool and is not published.
 
 **Development:**
+
 ```bash
 pnpm dev
 ```

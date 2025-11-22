@@ -49,18 +49,22 @@
       if (directionAttr.startsWith('fade-bg-to-')) {
         this.direction = directionAttr;
       } else {
-        const directionValue = directionAttr.startsWith('to-') ? directionAttr.substring(3) : directionAttr;
+        const directionValue = directionAttr.startsWith('to-')
+          ? directionAttr.substring(3)
+          : directionAttr;
         this.direction = `fade-bg-to-${directionValue}`;
       }
 
       this.color = colorAttr.startsWith('fade-bg-') ? colorAttr : `fade-bg-${colorAttr}`;
-      this.steps = stepsAttr.startsWith('fade-bg-steps-') ? stepsAttr : `fade-bg-steps-${stepsAttr}`;
+      this.steps = stepsAttr.startsWith('fade-bg-steps-')
+        ? stepsAttr
+        : `fade-bg-steps-${stepsAttr}`;
       // Handle both color classes and image URLs
       this.background = backgroundAttr.startsWith('http')
         ? backgroundAttr
         : backgroundAttr.startsWith('bg-')
-        ? backgroundAttr
-        : `bg-${backgroundAttr}`;
+          ? backgroundAttr
+          : `bg-${backgroundAttr}`;
       this.useBetterGradient = useBetterAttr !== null ? useBetterAttr !== 'false' : true;
 
       // Handle size - convert Tailwind classes to pixels or use pixel value
@@ -163,32 +167,38 @@
         { value: 'bg-yellow-50', label: 'Yellow 50', type: 'color' },
         { value: 'bg-pink-50', label: 'Pink 50', type: 'color' },
         {
-          value: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop',
+          value:
+            'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop',
           label: 'Mountain Landscape',
           type: 'image',
         },
         {
-          value: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&h=800&fit=crop',
+          value:
+            'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&h=800&fit=crop',
           label: 'Ocean Waves',
           type: 'image',
         },
         {
-          value: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1200&h=800&fit=crop',
+          value:
+            'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1200&h=800&fit=crop',
           label: 'Forest Path',
           type: 'image',
         },
         {
-          value: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1200&h=800&fit=crop',
+          value:
+            'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1200&h=800&fit=crop',
           label: 'Desert Sunset',
           type: 'image',
         },
         {
-          value: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&h=800&fit=crop',
+          value:
+            'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&h=800&fit=crop',
           label: 'City Skyline',
           type: 'image',
         },
         {
-          value: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop',
+          value:
+            'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop',
           label: 'Abstract Pattern',
           type: 'image',
         },
@@ -204,7 +214,9 @@
         normalDirection = `bg-gradient-to-${directionValue}`;
       } else if (!normalDirection.startsWith('bg-gradient-to-')) {
         // If it's just 'to-b' or similar, remove 'to-' prefix and add 'bg-gradient-to-'
-        const directionValue = normalDirection.startsWith('to-') ? normalDirection.substring(3) : normalDirection;
+        const directionValue = normalDirection.startsWith('to-')
+          ? normalDirection.substring(3)
+          : normalDirection;
         normalDirection = `bg-gradient-to-${directionValue}`;
       }
 
@@ -241,17 +253,19 @@
         // Remove all height classes and set pixel height
         previewContainer.className = previewContainer.className
           .split(' ')
-          .filter((cls) => !cls.startsWith('h-'))
+          .filter(cls => !cls.startsWith('h-'))
           .join(' ');
         previewContainer.style.height = `${this.sizePixels}px`;
         const backgrounds = this.getBackgrounds();
-        const selectedBg = backgrounds.find((bg) => bg.value === this.background);
+        const selectedBg = backgrounds.find(bg => bg.value === this.background);
         const isImage = selectedBg?.type === 'image' || this.background.startsWith('http');
 
         // Remove all bg-* classes and background-image styles
         previewContainer.className = previewContainer.className
           .split(' ')
-          .filter((cls) => !cls.startsWith('bg-') && !cls.startsWith('from-') && !cls.startsWith('to-'))
+          .filter(
+            cls => !cls.startsWith('bg-') && !cls.startsWith('from-') && !cls.startsWith('to-')
+          )
           .join(' ');
         previewContainer.style.backgroundImage = '';
         previewContainer.style.backgroundSize = '';
@@ -289,7 +303,7 @@
 
       if (directionSelect) {
         directionSelect.value = this.direction;
-        directionSelect.addEventListener('change', (e) => {
+        directionSelect.addEventListener('change', e => {
           this.direction = e.target.value;
           this.updatePreview();
         });
@@ -297,7 +311,7 @@
 
       if (colorSelect) {
         colorSelect.value = this.color;
-        colorSelect.addEventListener('change', (e) => {
+        colorSelect.addEventListener('change', e => {
           this.color = e.target.value;
           this.updatePreview();
         });
@@ -305,7 +319,7 @@
 
       if (stepsSelect) {
         stepsSelect.value = this.steps;
-        stepsSelect.addEventListener('change', (e) => {
+        stepsSelect.addEventListener('change', e => {
           this.steps = e.target.value;
           this.updatePreview();
         });
@@ -313,7 +327,7 @@
 
       if (backgroundSelect) {
         backgroundSelect.value = this.background;
-        backgroundSelect.addEventListener('change', (e) => {
+        backgroundSelect.addEventListener('change', e => {
           this.background = e.target.value;
           this.updatePreview();
         });
@@ -321,7 +335,7 @@
 
       if (gradientToggle) {
         gradientToggle.checked = this.useBetterGradient;
-        gradientToggle.addEventListener('change', (e) => {
+        gradientToggle.addEventListener('change', e => {
           this.useBetterGradient = e.target.checked;
           this.updatePreview();
         });
@@ -336,7 +350,7 @@
         sizeSlider.value = this.sizePixels;
         sizeLabel.textContent = `${this.sizePixels}px`;
 
-        sizeSlider.addEventListener('input', (e) => {
+        sizeSlider.addEventListener('input', e => {
           this.sizePixels = parseInt(e.target.value, 10);
           sizeLabel.textContent = `${this.sizePixels}px`;
           this.updatePreview();
@@ -392,7 +406,7 @@
             >
               ${directions
                 .map(
-                  (dir) =>
+                  dir =>
                     `<option value="${dir.value}" ${dir.value === this.direction ? 'selected' : ''}>${this.escapeHtml(
                       dir.label
                     )}</option>`
@@ -410,7 +424,7 @@
             >
               ${colors
                 .map(
-                  (col) =>
+                  col =>
                     `<option value="${col.value}" ${col.value === this.color ? 'selected' : ''}>${this.escapeHtml(
                       col.label
                     )}</option>`
@@ -428,7 +442,7 @@
             >
               ${steps
                 .map(
-                  (step) =>
+                  step =>
                     `<option value="${step.value}" ${step.value === this.steps ? 'selected' : ''}>${this.escapeHtml(
                       step.label
                     )}</option>`
@@ -446,7 +460,7 @@
             >
               ${backgrounds
                 .map(
-                  (bg) =>
+                  bg =>
                     `<option value="${bg.value}" ${bg.value === this.background ? 'selected' : ''}>${this.escapeHtml(
                       bg.label
                     )}</option>`
@@ -479,12 +493,12 @@
           <div id="preview-container" class="${
             this.background.startsWith('http') ? '' : this.background
           } rounded-lg overflow-hidden border-2 border-gray-200" style="height: ${this.sizePixels}px;${
-        this.background.startsWith('http')
-          ? ` background-image: url(${this.escapeHtml(
-              this.background
-            )}); background-size: cover; background-position: center;`
-          : ''
-      }">
+            this.background.startsWith('http')
+              ? ` background-image: url(${this.escapeHtml(
+                  this.background
+                )}); background-size: cover; background-position: center;`
+              : ''
+          }">
             <div id="preview" class="${initialPreviewClasses} h-full"></div>
           </div>
         </div>

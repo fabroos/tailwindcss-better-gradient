@@ -13,6 +13,7 @@ pnpm dev
 ```
 
 This will:
+
 1. Start the Vite dev server
 2. Open the app automatically at `http://localhost:3000`
 3. Hot reload on file changes
@@ -65,4 +66,3 @@ Component for comparing gradients side by side.
   background-pattern="true"
 ></gradient-comparison>
 ```
-
