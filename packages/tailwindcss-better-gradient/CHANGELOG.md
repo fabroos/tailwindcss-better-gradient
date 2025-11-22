@@ -1,5 +1,11 @@
 # tailwindcss-better-gradient
 
+## 0.1.2
+
+### Patch Changes
+
+- 4e64618: ci issues test
+
 ## 0.1.1
 
 ### Patch Changes
