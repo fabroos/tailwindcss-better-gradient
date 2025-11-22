@@ -23,7 +23,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2  # Need at least 2 commits to compare versions
+          fetch-depth: 2 # Need at least 2 commits to compare versions
 
       - name: Setup Node.js 20.x
         uses: actions/setup-node@v4
@@ -46,7 +46,7 @@ jobs:
           # Get current version from package.json
           CURRENT_VERSION=$(node -p "require('./packages/tailwindcss-better-gradient/package.json').version")
           echo "Current version: $CURRENT_VERSION"
-          
+
           # Get previous version from git (before this commit)
           if git rev-parse HEAD~1 >/dev/null 2>&1; then
             PREVIOUS_VERSION=$(git show HEAD~1:packages/tailwindcss-better-gradient/package.json 2>/dev/null | node -p "JSON.parse(require('fs').readFileSync(0)).version" 2>/dev/null || echo "")
@@ -73,8 +73,6 @@ jobs:
         run: |
           cd packages/tailwindcss-better-gradient
           npm publish --access public
-        env:
           # Using OIDC trusted publishing (no NPM_TOKEN needed)
           # If you need to install private dependencies, use a read-only token:
-          # NODE_AUTH_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
-
+          # Add env: block with NODE_AUTH_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
