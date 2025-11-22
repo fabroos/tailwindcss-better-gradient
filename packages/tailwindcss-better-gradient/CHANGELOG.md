@@ -1,5 +1,11 @@
 # tailwindcss-better-gradient
 
+## 0.1.3
+
+### Patch Changes
+
+- efff216: fix ci
+
 ## 0.1.2
 
 ### Patch Changes
