@@ -18,9 +18,9 @@
   class GradientPlayground extends HTMLElement {
     constructor() {
       super();
-      this.direction = 'fade-bg-to-b';
-      this.color = 'fade-bg-purple-500';
-      this.steps = 'fade-bg-steps-6';
+      this.direction = 'fade-b';
+      this.color = 'fade-purple-500';
+      this.steps = 'fade-6';
       this.background = 'bg-white';
       this.useBetterGradient = true;
       this.sizePixels = 256; // Default to 256px (equivalent to h-64)
@@ -45,20 +45,20 @@
       const backgroundAttr = this.getAttribute('default-background') || 'bg-white';
       const useBetterAttr = this.getAttribute('use-better-gradient');
 
-      // Handle direction: remove 'to-' prefix if present, then add 'fade-bg-to-'
-      if (directionAttr.startsWith('fade-bg-to-')) {
+      // Handle direction: remove 'to-' prefix if present, then add 'fade-'
+      if (directionAttr.startsWith('fade-')) {
         this.direction = directionAttr;
       } else {
         const directionValue = directionAttr.startsWith('to-')
           ? directionAttr.substring(3)
           : directionAttr;
-        this.direction = `fade-bg-to-${directionValue}`;
+        this.direction = `fade-${directionValue}`;
       }
 
-      this.color = colorAttr.startsWith('fade-bg-') ? colorAttr : `fade-bg-${colorAttr}`;
-      this.steps = stepsAttr.startsWith('fade-bg-steps-')
+      this.color = colorAttr.startsWith('fade-') ? colorAttr : `fade-${colorAttr}`;
+      this.steps = stepsAttr.startsWith('fade-')
         ? stepsAttr
-        : `fade-bg-steps-${stepsAttr}`;
+        : `fade-${stepsAttr}`;
       // Handle both color classes and image URLs
       this.background = backgroundAttr.startsWith('http')
         ? backgroundAttr
@@ -106,48 +106,48 @@
 
     getDirections() {
       return [
-        { value: 'fade-bg-to-t', label: 'Top (to-t)' },
-        { value: 'fade-bg-to-b', label: 'Bottom (to-b)' },
-        { value: 'fade-bg-to-r', label: 'Right (to-r)' },
-        { value: 'fade-bg-to-l', label: 'Left (to-l)' },
-        { value: 'fade-bg-to-tr', label: 'Top Right (to-tr)' },
-        { value: 'fade-bg-to-tl', label: 'Top Left (to-tl)' },
-        { value: 'fade-bg-to-br', label: 'Bottom Right (to-br)' },
-        { value: 'fade-bg-to-bl', label: 'Bottom Left (to-bl)' },
+        { value: 'fade-t', label: 'Top (t)' },
+        { value: 'fade-b', label: 'Bottom (b)' },
+        { value: 'fade-r', label: 'Right (r)' },
+        { value: 'fade-l', label: 'Left (l)' },
+        { value: 'fade-tr', label: 'Top Right (tr)' },
+        { value: 'fade-tl', label: 'Top Left (tl)' },
+        { value: 'fade-br', label: 'Bottom Right (br)' },
+        { value: 'fade-bl', label: 'Bottom Left (bl)' },
       ];
     }
 
     getColors() {
       return [
-        { value: 'fade-bg-purple-500', label: 'Purple 500' },
-        { value: 'fade-bg-blue-500', label: 'Blue 500' },
-        { value: 'fade-bg-red-500', label: 'Red 500' },
-        { value: 'fade-bg-green-500', label: 'Green 500' },
-        { value: 'fade-bg-pink-500', label: 'Pink 500' },
-        { value: 'fade-bg-yellow-500', label: 'Yellow 500' },
-        { value: 'fade-bg-indigo-500', label: 'Indigo 500' },
-        { value: 'fade-bg-teal-500', label: 'Teal 500' },
-        { value: 'fade-bg-rose-600', label: 'Rose 600' },
-        { value: 'fade-bg-emerald-500', label: 'Emerald 500' },
-        { value: 'fade-bg-amber-500', label: 'Amber 500' },
-        { value: 'fade-bg-black', label: 'Black' },
-        { value: 'fade-bg-white', label: 'White' },
+        { value: 'fade-purple-500', label: 'Purple 500' },
+        { value: 'fade-blue-500', label: 'Blue 500' },
+        { value: 'fade-red-500', label: 'Red 500' },
+        { value: 'fade-green-500', label: 'Green 500' },
+        { value: 'fade-pink-500', label: 'Pink 500' },
+        { value: 'fade-yellow-500', label: 'Yellow 500' },
+        { value: 'fade-indigo-500', label: 'Indigo 500' },
+        { value: 'fade-teal-500', label: 'Teal 500' },
+        { value: 'fade-rose-600', label: 'Rose 600' },
+        { value: 'fade-emerald-500', label: 'Emerald 500' },
+        { value: 'fade-amber-500', label: 'Amber 500' },
+        { value: 'fade-black', label: 'Black' },
+        { value: 'fade-white', label: 'White' },
       ];
     }
 
     getSteps() {
       return [
-        { value: 'fade-bg-steps-2', label: '2 - Quick fade' },
-        { value: 'fade-bg-steps-3', label: '3 - Quick fade' },
-        { value: 'fade-bg-steps-4', label: '4 - Balanced' },
-        { value: 'fade-bg-steps-5', label: '5 - Balanced' },
-        { value: 'fade-bg-steps-6', label: '6 - Default (balanced)' },
-        { value: 'fade-bg-steps-8', label: '8 - Smooth' },
-        { value: 'fade-bg-steps-10', label: '10 - Smooth' },
-        { value: 'fade-bg-steps-12', label: '12 - Very smooth' },
-        { value: 'fade-bg-steps-16', label: '16 - Ultra smooth' },
-        { value: 'fade-bg-steps-20', label: '20 - Ultra smooth' },
-        { value: 'fade-bg-steps-24', label: '24 - Maximum smoothness' },
+        { value: 'fade-2', label: '2 - Quick fade' },
+        { value: 'fade-3', label: '3 - Quick fade' },
+        { value: 'fade-4', label: '4 - Balanced' },
+        { value: 'fade-5', label: '5 - Balanced' },
+        { value: 'fade-6', label: '6 - Default (balanced)' },
+        { value: 'fade-8', label: '8 - Smooth' },
+        { value: 'fade-10', label: '10 - Smooth' },
+        { value: 'fade-12', label: '12 - Very smooth' },
+        { value: 'fade-16', label: '16 - Ultra smooth' },
+        { value: 'fade-20', label: '20 - Ultra smooth' },
+        { value: 'fade-24', label: '24 - Maximum smoothness' },
       ];
     }
 
@@ -206,11 +206,11 @@
     }
 
     convertToNormalGradient() {
-      // Convert fade-bg-to-b to bg-gradient-to-b
+      // Convert fade-b to bg-gradient-to-b
       let normalDirection = this.direction;
-      if (normalDirection.startsWith('fade-bg-to-')) {
-        // Remove 'fade-bg-to-' prefix and add 'bg-gradient-to-' prefix
-        const directionValue = normalDirection.replace('fade-bg-to-', '');
+      if (normalDirection.startsWith('fade-')) {
+        // Remove 'fade-' prefix and add 'bg-gradient-to-' prefix
+        const directionValue = normalDirection.replace('fade-', '');
         normalDirection = `bg-gradient-to-${directionValue}`;
       } else if (!normalDirection.startsWith('bg-gradient-to-')) {
         // If it's just 'to-b' or similar, remove 'to-' prefix and add 'bg-gradient-to-'
@@ -220,10 +220,10 @@
         normalDirection = `bg-gradient-to-${directionValue}`;
       }
 
-      // Convert fade-bg-purple-500 to purple-500
+      // Convert fade-purple-500 to purple-500
       let normalColor = this.color;
-      if (normalColor.startsWith('fade-bg-')) {
-        normalColor = normalColor.replace('fade-bg-', '');
+      if (normalColor.startsWith('fade-')) {
+        normalColor = normalColor.replace('fade-', '');
       }
 
       return {
@@ -242,7 +242,7 @@
 
       // Set classes based on gradient type - directly set className to ensure clean state
       if (this.useBetterGradient) {
-        preview.className = `fade-bg ${this.direction} ${this.color} ${this.steps} h-full`;
+        preview.className = `fade ${this.direction} ${this.color} ${this.steps} h-full`;
       } else {
         const normalGradient = this.convertToNormalGradient();
         preview.className = `${normalGradient.classes} h-full`;
@@ -285,7 +285,7 @@
       // Update code output
       if (codeOutput) {
         if (this.useBetterGradient) {
-          const classes = `fade-bg ${this.color} ${this.direction} ${this.steps}`;
+          const classes = `fade ${this.color} ${this.direction} ${this.steps}`;
           codeOutput.textContent = `<div class="${classes}"></div>`;
         } else {
           const normalGradient = this.convertToNormalGradient();
@@ -368,7 +368,7 @@
 
       // Get initial preview classes
       const initialPreviewClasses = this.useBetterGradient
-        ? `fade-bg ${this.color} ${this.direction} ${this.steps}`
+        ? `fade ${this.color} ${this.direction} ${this.steps}`
         : this.convertToNormalGradient().classes;
 
       this.innerHTML = `

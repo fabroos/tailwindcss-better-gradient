@@ -60,7 +60,7 @@ Component for comparing gradients side by side.
   left-label="Tailwind Default"
   left-classes="bg-gradient-to-b from-purple-500 to-transparent"
   right-label="Better Gradient"
-  right-classes="fade-bg fade-bg-purple-500 fade-bg-to-b"
+  right-classes="fade fade-purple-500 fade-b"
   height="h-64"
   show-code="true"
   background-pattern="true"

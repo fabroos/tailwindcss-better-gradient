@@ -31,28 +31,28 @@ function generateGradientStops(steps: number): string {
 module.exports = plugin(function ({ addUtilities, matchUtilities, theme }: PluginAPI) {
   // Add directional utilities
   addUtilities({
-    '.fade-bg-to-t': {
+    '.fade-t': {
       '--fade-angle': '0deg',
     },
-    '.fade-bg-to-b': {
+    '.fade-b': {
       '--fade-angle': '180deg',
     },
-    '.fade-bg-to-r': {
+    '.fade-r': {
       '--fade-angle': '90deg',
     },
-    '.fade-bg-to-l': {
+    '.fade-l': {
       '--fade-angle': '270deg',
     },
-    '.fade-bg-to-tr': {
+    '.fade-tr': {
       '--fade-angle': '45deg',
     },
-    '.fade-bg-to-tl': {
+    '.fade-tl': {
       '--fade-angle': '315deg',
     },
-    '.fade-bg-to-br': {
+    '.fade-br': {
       '--fade-angle': '135deg',
     },
-    '.fade-bg-to-bl': {
+    '.fade-bl': {
       '--fade-angle': '225deg',
     },
   });
@@ -60,10 +60,10 @@ module.exports = plugin(function ({ addUtilities, matchUtilities, theme }: Plugi
   // Get default steps from config
   const defaultSteps = theme('betterGradient.steps', 6) as number;
 
-  // Add base fade-bg utility (uses default steps)
+  // Add base fade utility (uses default steps)
   const defaultGradientStops = generateGradientStops(defaultSteps);
   addUtilities({
-    '.fade-bg': {
+    '.fade': {
       '--fade-oklch': 'var(--color-background, white)',
       'background-image': `linear-gradient(var(--fade-angle, 0deg), ${defaultGradientStops})`,
       'background-repeat': 'no-repeat',
@@ -71,14 +71,14 @@ module.exports = plugin(function ({ addUtilities, matchUtilities, theme }: Plugi
   });
 
   // Add color utilities with full gradient (works with Tailwind's color palette)
-  // This creates utilities like fade-bg-blue-500, fade-bg-red-600, etc.
+  // This creates utilities like fade-blue-500, fade-red-600, etc.
   // Temporarily disabled - investigating Tailwind v4 compatibility
   // TODO: Re-enable color utilities once flattenColorPalette import issue is resolved
 
-  // Add dynamic step utilities (fade-bg-steps-6, fade-bg-steps-12, etc.)
+  // Add dynamic step utilities (fade-6, fade-12, etc.)
   matchUtilities(
     {
-      'fade-bg-steps': (value: string) => {
+      fade: (value: string) => {
         const steps = parseInt(value, 10);
         if (isNaN(steps) || steps < 1) {
           return {

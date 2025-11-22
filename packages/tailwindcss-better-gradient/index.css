@@ -1,40 +1,40 @@
 /* Tailwind CSS Better Gradient Plugin - CSS-based implementation for v4 */
 
 /* Directional utilities */
-@utility fade-bg-to-t {
+@utility fade-t {
   --fade-angle: 0deg;
 }
 
-@utility fade-bg-to-b {
+@utility fade-b {
   --fade-angle: 180deg;
 }
 
-@utility fade-bg-to-r {
+@utility fade-r {
   --fade-angle: 90deg;
 }
 
-@utility fade-bg-to-l {
+@utility fade-l {
   --fade-angle: 270deg;
 }
 
-@utility fade-bg-to-tr {
+@utility fade-tr {
   --fade-angle: 45deg;
 }
 
-@utility fade-bg-to-tl {
+@utility fade-tl {
   --fade-angle: 315deg;
 }
 
-@utility fade-bg-to-br {
+@utility fade-br {
   --fade-angle: 135deg;
 }
 
-@utility fade-bg-to-bl {
+@utility fade-bl {
   --fade-angle: 225deg;
 }
 
-/* Base fade-bg utility */
-@utility fade-bg {
+/* Base fade utility */
+@utility fade {
   --fade-oklch: var(--color-background, white);
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
@@ -50,8 +50,8 @@
 }
 
 /* Color utilities - using theme colors with functional utilities */
-/* This matches utilities like fade-bg-blue-500, fade-bg-red-600, etc. */
-@utility fade-bg-* {
+/* This matches utilities like fade-blue-500, fade-red-600, etc. */
+@utility fade-* {
   --fade-oklch: --value(--color-*, [color]);
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
@@ -69,7 +69,7 @@
 /* Generate gradient stops dynamically - this requires a JavaScript helper */
 /* For now, we'll provide predefined step utilities */
 
-@utility fade-bg-steps-2 {
+@utility fade-2 {
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
     oklch(from var(--fade-oklch) l c h / 1) 0%,
@@ -77,7 +77,7 @@
   ) !important;
 }
 
-@utility fade-bg-steps-3 {
+@utility fade-3 {
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
     oklch(from var(--fade-oklch) l c h / 1) 0%,
@@ -86,7 +86,7 @@
   ) !important;
 }
 
-@utility fade-bg-steps-4 {
+@utility fade-4 {
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
     oklch(from var(--fade-oklch) l c h / 1) 0%,
@@ -96,7 +96,7 @@
   ) !important;
 }
 
-@utility fade-bg-steps-5 {
+@utility fade-5 {
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
     oklch(from var(--fade-oklch) l c h / 1) 0%,
@@ -107,7 +107,7 @@
   ) !important;
 }
 
-@utility fade-bg-steps-6 {
+@utility fade-6 {
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
     oklch(from var(--fade-oklch) l c h / 1) 0%,
@@ -120,7 +120,7 @@
   ) !important;
 }
 
-@utility fade-bg-steps-8 {
+@utility fade-8 {
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
     oklch(from var(--fade-oklch) l c h / 1) 0%,
@@ -135,7 +135,7 @@
   ) !important;
 }
 
-@utility fade-bg-steps-10 {
+@utility fade-10 {
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
     oklch(from var(--fade-oklch) l c h / 1) 0%,
@@ -152,7 +152,7 @@
   ) !important;
 }
 
-@utility fade-bg-steps-12 {
+@utility fade-12 {
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
     oklch(from var(--fade-oklch) l c h / 1) 0%,
@@ -171,7 +171,7 @@
   ) !important;
 }
 
-@utility fade-bg-steps-16 {
+@utility fade-16 {
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
     oklch(from var(--fade-oklch) l c h / 1) 0%,
@@ -194,7 +194,7 @@
   ) !important;
 }
 
-@utility fade-bg-steps-20 {
+@utility fade-20 {
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
     oklch(from var(--fade-oklch) l c h / 1) 0%,
@@ -221,7 +221,7 @@
   ) !important;
 }
 
-@utility fade-bg-steps-24 {
+@utility fade-24 {
   background-image: linear-gradient(
     var(--fade-angle, 0deg),
     oklch(from var(--fade-oklch) l c h / 1) 0%,

@@ -52,27 +52,27 @@ module.exports = {
 
 ```html
 <!-- Basic: Fade from blue to transparent, top to bottom -->
-<div class="fade-bg-blue-500 fade-bg-to-b">Content here</div>
+<div class="fade-blue-500 fade-b">Content here</div>
 
 <!-- With custom steps: Ultra smooth 12-step gradient -->
-<div class="fade-bg-blue-500 fade-bg-to-b fade-bg-steps-12">Content here</div>
+<div class="fade-blue-500 fade-b fade-12">Content here</div>
 
 <!-- Or a util for shadcn users that use the --background-color variable -->
-<div class="fade-bg">Content here</div>
+<div class="fade">Content here</div>
 <!-- or -->
-<div class="fade-bg fade-bg-to-b">Content here</div>
+<div class="fade fade-b">Content here</div>
 ```
 
 ### Directions
 
-- `fade-bg-to-t` - Top (0deg)
-- `fade-bg-to-b` - Bottom (180deg)
-- `fade-bg-to-l` - Left (270deg)
-- `fade-bg-to-r` - Right (90deg)
-- `fade-bg-to-tr` - Top Right (45deg)
-- `fade-bg-to-tl` - Top Left (315deg)
-- `fade-bg-to-br` - Bottom Right (135deg)
-- `fade-bg-to-bl` - Bottom Left (225deg)
+- `fade-t` - Top (0deg)
+- `fade-b` - Bottom (180deg)
+- `fade-l` - Left (270deg)
+- `fade-r` - Right (90deg)
+- `fade-tr` - Top Right (45deg)
+- `fade-tl` - Top Left (315deg)
+- `fade-br` - Bottom Right (135deg)
+- `fade-bl` - Bottom Left (225deg)
 
 ## License
 
