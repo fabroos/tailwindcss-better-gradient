@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+@import 'tailwindcss-better-gradient';
+
+/* Custom base colors as CSS variables */
+:root {
+  --color-background: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #1f2937;
+  }
+}

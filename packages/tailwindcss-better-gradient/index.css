@@ -1,0 +1,254 @@
+/* Tailwind CSS Better Gradient Plugin - CSS-based implementation for v4 */
+
+/* Directional utilities */
+@utility fade-bg-to-t {
+  --fade-angle: 0deg;
+}
+
+@utility fade-bg-to-b {
+  --fade-angle: 180deg;
+}
+
+@utility fade-bg-to-r {
+  --fade-angle: 90deg;
+}
+
+@utility fade-bg-to-l {
+  --fade-angle: 270deg;
+}
+
+@utility fade-bg-to-tr {
+  --fade-angle: 45deg;
+}
+
+@utility fade-bg-to-tl {
+  --fade-angle: 315deg;
+}
+
+@utility fade-bg-to-br {
+  --fade-angle: 135deg;
+}
+
+@utility fade-bg-to-bl {
+  --fade-angle: 225deg;
+}
+
+/* Base fade-bg utility */
+@utility fade-bg {
+  --fade-oklch: var(--color-background, white);
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.98) 16.67%,
+    oklch(from var(--fade-oklch) l c h / 0.89) 33.33%,
+    oklch(from var(--fade-oklch) l c h / 0.70) 50%,
+    oklch(from var(--fade-oklch) l c h / 0.44) 66.67%,
+    oklch(from var(--fade-oklch) l c h / 0.19) 83.33%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  );
+  background-repeat: no-repeat;
+}
+
+/* Color utilities - using theme colors with functional utilities */
+/* This matches utilities like fade-bg-blue-500, fade-bg-red-600, etc. */
+@utility fade-bg-* {
+  --fade-oklch: --value(--color-*, [color]);
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.98) 16.67%,
+    oklch(from var(--fade-oklch) l c h / 0.89) 33.33%,
+    oklch(from var(--fade-oklch) l c h / 0.70) 50%,
+    oklch(from var(--fade-oklch) l c h / 0.44) 66.67%,
+    oklch(from var(--fade-oklch) l c h / 0.19) 83.33%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  );
+  background-repeat: no-repeat;
+}
+
+/* Generate gradient stops dynamically - this requires a JavaScript helper */
+/* For now, we'll provide predefined step utilities */
+
+@utility fade-bg-steps-2 {
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  ) !important;
+}
+
+@utility fade-bg-steps-3 {
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.70) 50%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  ) !important;
+}
+
+@utility fade-bg-steps-4 {
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.89) 33.33%,
+    oklch(from var(--fade-oklch) l c h / 0.44) 66.67%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  ) !important;
+}
+
+@utility fade-bg-steps-5 {
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.93) 25%,
+    oklch(from var(--fade-oklch) l c h / 0.70) 50%,
+    oklch(from var(--fade-oklch) l c h / 0.30) 75%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  ) !important;
+}
+
+@utility fade-bg-steps-6 {
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.98) 16.67%,
+    oklch(from var(--fade-oklch) l c h / 0.89) 33.33%,
+    oklch(from var(--fade-oklch) l c h / 0.70) 50%,
+    oklch(from var(--fade-oklch) l c h / 0.44) 66.67%,
+    oklch(from var(--fade-oklch) l c h / 0.19) 83.33%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  ) !important;
+}
+
+@utility fade-bg-steps-8 {
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.99) 12.5%,
+    oklch(from var(--fade-oklch) l c h / 0.95) 25%,
+    oklch(from var(--fade-oklch) l c h / 0.88) 37.5%,
+    oklch(from var(--fade-oklch) l c h / 0.78) 50%,
+    oklch(from var(--fade-oklch) l c h / 0.63) 62.5%,
+    oklch(from var(--fade-oklch) l c h / 0.44) 75%,
+    oklch(from var(--fade-oklch) l c h / 0.22) 87.5%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  ) !important;
+}
+
+@utility fade-bg-steps-10 {
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.99) 10%,
+    oklch(from var(--fade-oklch) l c h / 0.97) 20%,
+    oklch(from var(--fade-oklch) l c h / 0.93) 30%,
+    oklch(from var(--fade-oklch) l c h / 0.86) 40%,
+    oklch(from var(--fade-oklch) l c h / 0.78) 50%,
+    oklch(from var(--fade-oklch) l c h / 0.66) 60%,
+    oklch(from var(--fade-oklch) l c h / 0.52) 70%,
+    oklch(from var(--fade-oklch) l c h / 0.35) 80%,
+    oklch(from var(--fade-oklch) l c h / 0.17) 90%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  ) !important;
+}
+
+@utility fade-bg-steps-12 {
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.99) 8.33%,
+    oklch(from var(--fade-oklch) l c h / 0.97) 16.67%,
+    oklch(from var(--fade-oklch) l c h / 0.94) 25%,
+    oklch(from var(--fade-oklch) l c h / 0.89) 33.33%,
+    oklch(from var(--fade-oklch) l c h / 0.83) 41.67%,
+    oklch(from var(--fade-oklch) l c h / 0.74) 50%,
+    oklch(from var(--fade-oklch) l c h / 0.63) 58.33%,
+    oklch(from var(--fade-oklch) l c h / 0.50) 66.67%,
+    oklch(from var(--fade-oklch) l c h / 0.35) 75%,
+    oklch(from var(--fade-oklch) l c h / 0.19) 83.33%,
+    oklch(from var(--fade-oklch) l c h / 0.06) 91.67%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  ) !important;
+}
+
+@utility fade-bg-steps-16 {
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.99) 6.25%,
+    oklch(from var(--fade-oklch) l c h / 0.98) 12.5%,
+    oklch(from var(--fade-oklch) l c h / 0.95) 18.75%,
+    oklch(from var(--fade-oklch) l c h / 0.92) 25%,
+    oklch(from var(--fade-oklch) l c h / 0.88) 31.25%,
+    oklch(from var(--fade-oklch) l c h / 0.83) 37.5%,
+    oklch(from var(--fade-oklch) l c h / 0.78) 43.75%,
+    oklch(from var(--fade-oklch) l c h / 0.70) 50%,
+    oklch(from var(--fade-oklch) l c h / 0.61) 56.25%,
+    oklch(from var(--fade-oklch) l c h / 0.52) 62.5%,
+    oklch(from var(--fade-oklch) l c h / 0.41) 68.75%,
+    oklch(from var(--fade-oklch) l c h / 0.30) 75%,
+    oklch(from var(--fade-oklch) l c h / 0.19) 81.25%,
+    oklch(from var(--fade-oklch) l c h / 0.10) 87.5%,
+    oklch(from var(--fade-oklch) l c h / 0.03) 93.75%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  ) !important;
+}
+
+@utility fade-bg-steps-20 {
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.99) 5%,
+    oklch(from var(--fade-oklch) l c h / 0.98) 10%,
+    oklch(from var(--fade-oklch) l c h / 0.96) 15%,
+    oklch(from var(--fade-oklch) l c h / 0.93) 20%,
+    oklch(from var(--fade-oklch) l c h / 0.89) 25%,
+    oklch(from var(--fade-oklch) l c h / 0.85) 30%,
+    oklch(from var(--fade-oklch) l c h / 0.80) 35%,
+    oklch(from var(--fade-oklch) l c h / 0.74) 40%,
+    oklch(from var(--fade-oklch) l c h / 0.67) 45%,
+    oklch(from var(--fade-oklch) l c h / 0.59) 50%,
+    oklch(from var(--fade-oklch) l c h / 0.51) 55%,
+    oklch(from var(--fade-oklch) l c h / 0.42) 60%,
+    oklch(from var(--fade-oklch) l c h / 0.33) 65%,
+    oklch(from var(--fade-oklch) l c h / 0.24) 70%,
+    oklch(from var(--fade-oklch) l c h / 0.16) 75%,
+    oklch(from var(--fade-oklch) l c h / 0.09) 80%,
+    oklch(from var(--fade-oklch) l c h / 0.04) 85%,
+    oklch(from var(--fade-oklch) l c h / 0.01) 90%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 95%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  ) !important;
+}
+
+@utility fade-bg-steps-24 {
+  background-image: linear-gradient(
+    var(--fade-angle, 0deg),
+    oklch(from var(--fade-oklch) l c h / 1.00) 0%,
+    oklch(from var(--fade-oklch) l c h / 0.99) 4.17%,
+    oklch(from var(--fade-oklch) l c h / 0.98) 8.33%,
+    oklch(from var(--fade-oklch) l c h / 0.97) 12.5%,
+    oklch(from var(--fade-oklch) l c h / 0.95) 16.67%,
+    oklch(from var(--fade-oklch) l c h / 0.92) 20.83%,
+    oklch(from var(--fade-oklch) l c h / 0.89) 25%,
+    oklch(from var(--fade-oklch) l c h / 0.85) 29.17%,
+    oklch(from var(--fade-oklch) l c h / 0.81) 33.33%,
+    oklch(from var(--fade-oklch) l c h / 0.76) 37.5%,
+    oklch(from var(--fade-oklch) l c h / 0.70) 41.67%,
+    oklch(from var(--fade-oklch) l c h / 0.64) 45.83%,
+    oklch(from var(--fade-oklch) l c h / 0.57) 50%,
+    oklch(from var(--fade-oklch) l c h / 0.50) 54.17%,
+    oklch(from var(--fade-oklch) l c h / 0.42) 58.33%,
+    oklch(from var(--fade-oklch) l c h / 0.34) 62.5%,
+    oklch(from var(--fade-oklch) l c h / 0.26) 66.67%,
+    oklch(from var(--fade-oklch) l c h / 0.19) 70.83%,
+    oklch(from var(--fade-oklch) l c h / 0.12) 75%,
+    oklch(from var(--fade-oklch) l c h / 0.07) 79.17%,
+    oklch(from var(--fade-oklch) l c h / 0.03) 83.33%,
+    oklch(from var(--fade-oklch) l c h / 0.01) 87.5%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 91.67%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 95.83%,
+    oklch(from var(--fade-oklch) l c h / 0.00) 100%
+  ) !important;
+}
+

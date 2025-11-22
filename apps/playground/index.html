@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Better Gradient Plugin Demo</title>
+    <script type="module" src="./src/main.js"></script>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl font-bold mb-8 text-gray-900">Better Gradient Plugin Demo</h1>
+
+      <!-- Interactive Demo -->
+      <div class="mb-12 bg-white rounded-xl p-8 shadow-lg">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Interactive Playground</h2>
+        <p class="text-gray-600 mb-6">Adjust the parameters below to see the gradient in real-time</p>
+
+        <gradient-playground
+          default-direction="to-b"
+          default-color="purple-500"
+          default-steps="6"
+          height="h-64"
+          show-code="true"
+        ></gradient-playground>
+      </div>
+
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Basic Directions</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <!-- Top -->
+          <div class="space-y-2">
+            <div class="h-48 rounded-lg overflow-hidden">
+              <div class="fade-bg-purple-500 fade-bg-to-t h-full"></div>
+            </div>
+            <p class="text-sm text-center text-gray-600 font-mono">fade-bg-to-t</p>
+          </div>
+
+          <!-- Bottom -->
+          <div class="space-y-2">
+            <div class="h-48 rounded-lg overflow-hidden">
+              <div class="fade-bg-blue-500 fade-bg-to-b h-full"></div>
+            </div>
+            <p class="text-sm text-center text-gray-600 font-mono">fade-bg-to-b</p>
+          </div>
+
+          <!-- Right -->
+          <div class="space-y-2">
+            <div class="h-48 rounded-lg overflow-hidden">
+              <div class="fade-bg-green-500 fade-bg-to-r h-full"></div>
+            </div>
+            <p class="text-sm text-center text-gray-600 font-mono">fade-bg-to-r</p>
+          </div>
+
+          <!-- Left -->
+          <div class="space-y-2">
+            <div class="h-48 rounded-lg overflow-hidden">
+              <div class="fade-bg-red-500 fade-bg-to-l h-full"></div>
+            </div>
+            <p class="text-sm text-center text-gray-600 font-mono">fade-bg-to-l</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Diagonal Directions</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <!-- Top Right -->
+          <div class="space-y-2">
+            <div class="h-48 rounded-lg overflow-hidden">
+              <div class="fade-bg-pink-500 fade-bg-to-tr h-full"></div>
+            </div>
+            <p class="text-sm text-center text-gray-600 font-mono">fade-bg-to-tr</p>
+          </div>
+
+          <!-- Top Left -->
+          <div class="space-y-2">
+            <div class="h-48 rounded-lg overflow-hidden">
+              <div class="fade-bg-yellow-500 fade-bg-to-tl h-full"></div>
+            </div>
+            <p class="text-sm text-center text-gray-600 font-mono">fade-bg-to-tl</p>
+          </div>
+
+          <!-- Bottom Right -->
+          <div class="space-y-2">
+            <div class="h-48 rounded-lg overflow-hidden">
+              <div class="fade-bg-indigo-500 fade-bg-to-br h-full"></div>
+            </div>
+            <p class="text-sm text-center text-gray-600 font-mono">fade-bg-to-br</p>
+          </div>
+
+          <!-- Bottom Left -->
+          <div class="space-y-2">
+            <div class="h-48 rounded-lg overflow-hidden">
+              <div class="fade-bg-teal-500 fade-bg-to-bl h-full"></div>
+            </div>
+            <p class="text-sm text-center text-gray-600 font-mono">fade-bg-to-bl</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">vs Tailwind Default Gradients</h2>
+        <p class="text-gray-600 mb-6">
+          Compare the natural easing curve of Better Gradient with Tailwind's linear gradients
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Tailwind Default -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-700">Tailwind Default (Linear)</h3>
+            <div class="h-64 rounded-lg overflow-hidden">
+              <div class="h-full bg-gradient-to-b from-purple-500 to-transparent"></div>
+            </div>
+            <div class="bg-gray-50 p-3 rounded text-sm font-mono text-gray-700">from-purple-500 to-transparent</div>
+            <p class="text-sm text-gray-600">
+              ❌ Linear opacity transition<br />
+              ❌ Abrupt at start and end<br />
+              ❌ Less natural looking
+            </p>
+          </div>
+
+          <!-- Better Gradient -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-700">Better Gradient (Eased)</h3>
+            <div class="h-64 rounded-lg overflow-hidden">
+              <div class="fade-bg-purple-500 fade-bg-to-b h-full"></div>
+            </div>
+            <div class="bg-gray-50 p-3 rounded text-sm font-mono text-gray-700">
+              fade-bg-purple-500 fade-bg-to-b
+            </div>
+            <p class="text-sm text-gray-600">
+              ✓ Ease-out cubic curve<br />
+              ✓ Smooth, natural transition<br />
+              ✓ Professional appearance
+            </p>
+          </div>
+        </div>
+
+      
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Different Colors</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div class="space-y-2">
+            <div class="h-48 rounded-lg overflow-hidden">
+              <div class="fade-bg-rose-600 fade-bg-to-b h-full"></div>
+            </div>
+            <p class="text-sm text-center text-gray-600 font-mono">fade-bg-rose-600</p>
+          </div>
+
+          <div class="space-y-2">
+            <div class="h-48 rounded-lg overflow-hidden">
+              <div class="fade-bg-emerald-500 fade-bg-to-b h-full"></div>
+            </div>
+            <p class="text-sm text-center text-gray-600 font-mono">fade-bg-emerald-500</p>
+          </div>
+
+          <div class="space-y-2">
+            <div class="h-48 rounded-lg overflow-hidden">
+              <div class="fade-bg-amber-500 fade-bg-to-b h-full"></div>
+            </div>
+            <p class="text-sm text-center text-gray-600 font-mono">fade-bg-amber-500</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Practical Examples</h2>
+
+        <!-- Hero Section -->
+        <div class="relative mb-6 h-96 rounded-xl overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop"
+            alt="Background"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <div class="fade-bg-black fade-bg-to-t absolute inset-0"></div>
+          <div class="relative h-full flex items-end p-8">
+            <div>
+              <h3 class="text-4xl font-bold text-white mb-2">Beautiful Fade Overlay</h3>
+              <p class="text-white text-lg">Perfect for hero sections and image overlays</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card with Fade -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="relative bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl overflow-hidden h-64">
+            <div class="fade-bg-white fade-bg-to-b fade-bg-steps-2 absolute inset-0"></div>
+            <div class="relative p-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Card Title</h3>
+              <p class="text-gray-700">This card uses a fade background overlay to create depth</p>
+            </div>
+          </div>
+
+          <div class="relative bg-gradient-to-br from-pink-500 to-orange-500 rounded-xl overflow-hidden h-64">
+            <div class="fade-bg-black fade-bg-to-t absolute inset-0"></div>
+            <div class="relative p-6 h-full flex items-end">
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-2">Bottom Fade</h3>
+                <p class="text-white">Great for bottom-aligned content</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-12 bg-white rounded-xl p-8">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Usage Examples</h2>
+        <div class="space-y-4 font-mono text-sm">
+          <div class="bg-gray-100 p-4 rounded">
+            <p class="text-gray-600 mb-2">// Basic fade from top</p>
+            <code class="text-purple-600">&lt;div class="fade-bg-blue-500 fade-bg-to-t"&gt;&lt;/div&gt;</code>
+          </div>
+
+          <div class="bg-gray-100 p-4 rounded">
+            <p class="text-gray-600 mb-2">// Fade with any Tailwind color</p>
+            <code class="text-purple-600">&lt;div class="fade-bg-rose-600 fade-bg-to-b"&gt;&lt;/div&gt;</code>
+          </div>
+
+          <div class="bg-gray-100 p-4 rounded">
+            <p class="text-gray-600 mb-2">// Diagonal fade</p>
+            <code class="text-purple-600"
+              >&lt;div class="fade-bg-purple-500 fade-bg-to-br"&gt;&lt;/div&gt;</code
+            >
+          </div>
+
+          <div class="bg-gray-100 p-4 rounded">
+            <p class="text-gray-600 mb-2">// Control step count</p>
+            <code class="text-purple-600"
+              >&lt;div class="fade-bg-purple-500 fade-bg-to-b fade-bg-steps-12"&gt;&lt;/div&gt;</code
+            >
+          </div>
+
+          <div class="bg-gray-100 p-4 rounded">
+            <p class="text-gray-600 mb-2">// Combine with responsive utilities</p>
+            <code class="text-purple-600"
+              >&lt;div class="fade-bg-blue-500 md:fade-bg-red-500 fade-bg-to-t"&gt;&lt;/div&gt;</code
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
+

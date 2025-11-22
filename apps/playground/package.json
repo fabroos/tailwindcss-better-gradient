@@ -1,0 +1,21 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Playground app for testing Tailwind CSS Better Gradient plugin",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "@tailwindcss/vite": "^4.1.17",
+    "tailwindcss-better-gradient": "workspace:*"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.17",
+    "vite": "^5.0.0"
+  }
+}
