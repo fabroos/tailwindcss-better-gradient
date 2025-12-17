@@ -1,5 +1,13 @@
 # playground
 
+## 1.0.6
+
+### Patch Changes
+
+- 585ae76: Update namings of variables and add easings!
+- Updated dependencies [585ae76]
+  - tailwindcss-better-gradient@0.2.0
+
 ## 1.0.5
 
 ### Patch Changes
