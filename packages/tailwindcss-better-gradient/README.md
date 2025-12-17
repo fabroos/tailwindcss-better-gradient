@@ -24,15 +24,11 @@ npm install tailwindcss-better-gradient
 
 ### Tailwind CSS v4
 
-For Tailwind v4, use the JavaScript plugin in your `tailwind.config.ts`:
+For Tailwind v4, use the `@plugin` directive in your CSS file (e.g., `globals.css`):
 
-```typescript
-import type { Config } from 'tailwindcss';
-import betterGradient from 'tailwindcss-better-gradient';
-
-export default {
-  plugins: [betterGradient],
-} satisfies Config;
+```css
+@import 'tailwindcss';
+@plugin "tailwindcss-better-gradient";
 ```
 
 ### Tailwind CSS v3
