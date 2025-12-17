@@ -8,6 +8,7 @@
     "build": "pnpm --filter tailwindcss-better-gradient build && pnpm --filter playground build",
     "build:package": "pnpm --filter tailwindcss-better-gradient build",
     "build:playground": "pnpm --filter playground build",
+    "playground": "pnpm --filter playground dev",
     "changeset": "changeset",
     "version": "changeset version",
     "version:packages": "changeset version",

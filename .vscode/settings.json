@@ -1,0 +1,30 @@
+{
+  "tailwindCSS.experimental.classRegex": [
+    ["fade-([a-z]+(?:-[0-9]+)?)", "fade-$1"],
+    ["fade-to-([a-z]+(?:-[0-9]+)?)", "fade-to-$1"],
+    ["fade-([0-9]+)", "fade-$1"]
+  ],
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "tailwindCSS.rootFontSize": 16,
+  "tailwindCSS.emmetCompletions": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "css.validate": false,
+  "tailwindCSS.validate": true,
+  "tailwindCSS.files.exclude": [
+    "**/.git/**",
+    "**/node_modules/**",
+    "**/.hg/**",
+    "**/.svn/**",
+    "**/a.css",
+    "**/packages/tailwindcss-better-gradient/index.css",
+    "**/packages/tailwindcss-better-gradient/**/*.css"
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
+}

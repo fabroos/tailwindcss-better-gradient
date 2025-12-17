@@ -4,10 +4,8 @@
   "description": "A Tailwind CSS plugin for creating beautiful gradient backgrounds with directional control",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "style": "index.css",
   "files": [
     "dist",
-    "index.css",
     "README.md",
     "LICENSE"
   ],

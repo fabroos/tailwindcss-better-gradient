@@ -102,3 +102,11 @@ If still getting errors after Option 1:
 - [GitHub Actions Permissions](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token)
 - [Changesets Action Documentation](https://github.com/changesets/action)
 - [GitHub Workflow Permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#configuring-the-default-github_token-permissions)
+
+
+
+
+
+
+
+
