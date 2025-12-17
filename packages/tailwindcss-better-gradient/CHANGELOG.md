@@ -1,5 +1,11 @@
 # tailwindcss-better-gradient
 
+## 0.2.0
+
+### Minor Changes
+
+- 585ae76: Update namings of variables and add easings!
+
 ## 0.1.3
 
 ### Patch Changes
