@@ -1,5 +1,11 @@
 # tailwindcss-better-gradient
 
+## 0.2.1
+
+### Patch Changes
+
+- d90ff47: Readme
+
 ## 0.2.0
 
 ### Minor Changes
